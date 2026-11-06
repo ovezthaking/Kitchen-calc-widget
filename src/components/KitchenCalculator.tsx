@@ -276,18 +276,38 @@ export const KitchenCalculator: React.FC = () => {
               </p>
               <input
                 type="range"
-                min={2.0}
-                max={10.0}
-                step={0.5}
-                value={meters}
-                onChange={(e) => setMeters(parseFloat(e.target.value))}
+                min={0}
+                max={300}
+                step={1}
+                aria-valuemin={2.0}
+                aria-valuemax={10.0}
+                aria-valuenow={meters}
+                aria-valuetext={`${meters.toFixed(1)} mb`}
+                value={meters <= 5 ? (meters - 2) * 50 : 150 + (meters - 5) * 30}
+                onChange={(e) => {
+                  const pos = parseFloat(e.target.value);
+                  const nextMeters =
+                    pos <= 150
+                      ? 2 + Math.round(pos / 25) * 0.5
+                      : 5 + Math.round((pos - 150) / 15) * 0.5;
+                  setMeters(nextMeters);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'ArrowRight' || e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    setMeters((m) => Math.min(10, m + 0.5));
+                  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    setMeters((m) => Math.max(2, m - 0.5));
+                  }
+                }}
                 style={{ accentColor: 'var(--kc-primary)' }}
                 className="w-full h-2 bg-stone-200 rounded-lg cursor-pointer"
               />
-              <div className="flex justify-between text-xs text-stone-400 mt-1">
-                <span>2.0 mb (Mała)</span>
-                <span>5.0 mb (Standard)</span>
-                <span>10.0 mb (Duża)</span>
+              <div className="grid grid-cols-3 text-xs text-stone-400 mt-1">
+                <span className="text-left">2.0 mb (Mała)</span>
+                <span className="text-center">5.0 mb (Standard)</span>
+                <span className="text-right">10.0 mb (Duża)</span>
               </div>
             </div>
 
