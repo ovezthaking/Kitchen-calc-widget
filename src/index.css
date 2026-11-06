@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+/* Zamiana jednostek rem na px w tokenach Tailwinda — gwarantuje, że motywy WordPressa
+   z `html { font-size: 62.5% }` nie zmniejszą widżetu wewnątrz Shadow DOM
+   (jednostka `rem` zawsze dziedziczy z `<html>`, a nie z `:host`). */
+@theme {
+  --spacing: 4px;
+  --breakpoint-sm: 640px;
+  --container-2xl: 672px;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+}
+
+:host {
+  all: initial;
+  display: block;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #1c1917;
+  box-sizing: border-box;
+  --kc-primary: #92400e;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Widoczny focus dla nawigacji klawiaturą (WCAG 2.4.7) w kolorze marki */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--kc-primary);
+    outline-offset: 2px;
+  }
+}
