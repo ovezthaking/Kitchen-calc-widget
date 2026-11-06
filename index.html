@@ -42,7 +42,7 @@
     <!-- Przykładowa konfiguracja White-Label (obsługuje też parametry z URL: ?firma=...&kolor=...) -->
     <script>
       const urlParams = new URLSearchParams(window.location.search);
-      const companyParam = urlParams.get('firma') || urlParams.get('company') || "Stolarnia Drzazga & Syn";
+      const companyParam = urlParams.get('firma') || urlParams.get('company') || "Kuchnie na wymiar";
       const rawColor = urlParams.get('kolor') || urlParams.get('color') || "92400e";
       const colorParam = rawColor.startsWith('#') ? rawColor : '#' + rawColor;
       const priceParam = Number(urlParams.get('cena') || urlParams.get('price')) || 3300;
