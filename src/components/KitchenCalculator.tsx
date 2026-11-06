@@ -211,12 +211,14 @@ export const KitchenCalculator: React.FC = () => {
   return (
     <div style={brandStyle} className="max-w-2xl mx-auto bg-white rounded-2xl shadow-lg border border-stone-200 overflow-hidden text-stone-800">
       {/* Header */}
-      <div className="bg-stone-900 text-white p-6">
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-xs uppercase tracking-wider font-semibold px-2.5 py-1 rounded-sm bg-white/10 text-amber-300">
+      <div className="bg-stone-900 text-white p-5 sm:p-6">
+        <div className="flex items-start sm:items-center justify-between gap-3 mb-3">
+          <span className="text-[11px] sm:text-xs leading-snug uppercase tracking-wider font-semibold px-2.5 py-1 rounded-sm bg-white/10 text-amber-300">
             Kalkulator Wyceny Online • {config.companyName}
           </span>
-          <span className="text-sm text-stone-400 font-medium">Krok {step} z 4</span>
+          <span className="text-xs sm:text-sm text-stone-400 font-medium shrink-0 whitespace-nowrap pt-1 sm:pt-0">
+            Krok {step} z 4
+          </span>
         </div>
         <h2 className="text-xl sm:text-2xl font-bold">Oblicz koszt kuchni na wymiar w 60 sekund</h2>
         <div className="w-full bg-stone-800 h-2 rounded-full mt-4 overflow-hidden">
